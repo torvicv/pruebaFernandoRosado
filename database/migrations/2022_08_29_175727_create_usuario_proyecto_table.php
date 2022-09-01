@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('usuario_proyecto', function (Blueprint $table) {
             $table->foreignId('proyecto_id')->constrained();
             $table->foreignId('usuario_id')->constrained();
-            $table->enum('rol_usuario', ['participante', 'responsable']);
+            $table->enum('rol_usuario', ['participante', 'responsable', json_encode(['1' => 'participante', '2' => 'responsable'])]);
         });
     }
 

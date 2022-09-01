@@ -32,10 +32,10 @@ class Incidencia extends Model
     }
 
     /**
-     * Relación uno a muchos con la clase actividades.
+     * Relación uno a muchos con la clase Actividad.
      * @return Actividad
      */
-    public function actividades() {
+    public function actividad() {
         return $this->belongsTo(Actividad::class, 'id');
     }
 }

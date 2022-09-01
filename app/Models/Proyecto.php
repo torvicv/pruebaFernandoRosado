@@ -25,23 +25,19 @@ class Proyecto extends Model
 
     /**
      * Relación uno a muchos con la clase Actividad.
-     * @return [] Actividad
+     * @return collection Actividad
      */
-    public function actividad()
+    public function actividades()
     {
         return $this->hasMany(Actividad::class);
     }
 
     /**
      * Relación muchos a muchos con la clase Usuario.
-     * @return Usuario
+     * @return collection Usuario
      */
     public function usuarios()
     {
-        /*return $this->hasMany(Usuario::class, 'usuario_proyecto')
-            ->withPivot([
-                'rol_usuario'
-            ]);*/
         return $this->belongsToMany(Usuario::class, 'usuario_proyecto')->withPivot('rol_usuario');
     }
 }

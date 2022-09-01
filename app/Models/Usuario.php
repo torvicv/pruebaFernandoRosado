@@ -31,6 +31,10 @@ class Usuario extends Model
         return $this->belongsToMany(Proyecto::class,  'usuario_proyecto')->withPivot('rol_usuario');
     }
 
+    /**
+     * Relación muchos a muchos con la clase Actividad.
+     * @return collection Actividad.
+     */
     public function actividades()
     {
         return $this->belongsToMany(Actividad::class,  'usuario_actividad', 'usuarios_id', 'actividades_id')->withPivot('rol_usuario');

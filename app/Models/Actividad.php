@@ -22,23 +22,31 @@ class Actividad extends Model
 
     public $timestamps = false;
 
+    /**
+     * Relación muchos a muchos con Usuario.
+     * @return collection Usuario
+     */
     public function usuarios()
     {
-        /*return $this->hasMany(Usuario::class, 'usuario_actividad')
-            ->withPivot([
-                'rol_usuario'
-            ]);*/
         return $this->belongsToMany(Usuario::class, 'usuario_actividad', 'actividades_id', 'usuarios_id')
             ->withPivot([
                 'rol_usuario'
             ]);
     }
 
-    public function proyectos()
+    /**
+     * Relación de muchos a uno con Proyecto.
+     * @return proyecto
+     */
+    public function proyecto()
     {
         return $this->belongsTo(Proyecto::class);
     }
 
+    /**
+     * Relación uno a muchos con Incidencia.
+     * @return collection Incidencia
+     */
     public function incidencias()
     {
         return $this->hasMany(Incidencia::class);

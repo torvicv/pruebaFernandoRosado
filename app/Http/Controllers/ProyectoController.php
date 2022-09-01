@@ -8,7 +8,13 @@ use App\Models\Actividad;
 
 class ProyectoController extends Controller
 {
-    //
+
+    /**
+     * Método para crear un proyecto y una actividad, entonces asignamos la actividad
+     * al proyecto según el id del proyecto enviado en la request.
+     * @param Request
+     * @return Proyecto
+     */
     public function store(Request $request) {
 
         $proyectoNuevo = new Proyecto;
@@ -23,7 +29,7 @@ class ProyectoController extends Controller
 
         $actividad->name = $request->actividad_name;
 
-        $proyecto->actividad()->save($actividad);
+        $proyecto->actividades()->save($actividad);
 
         return $proyecto;
     }

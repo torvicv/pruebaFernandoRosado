@@ -9,13 +9,18 @@ use App\Models\Incidencia;
 
 class ActividadController extends Controller
 {
+    /**
+     * Método para guardar incidencia y asignarla a una actividad.
+     * @param Request
+     * @return Actividad.
+     */
     public function store(Request $request) {
 
         $actividad = Actividad::find($request->actividad_id);
 
         $incidencia = new Incidencia;
 
-        $incidencia->name = $request->incidencia_name;//'Incidencia 1 Actividad 1';
+        $incidencia->name = $request->incidencia_name;
 
         $actividad->incidencias()->save($incidencia);
 
